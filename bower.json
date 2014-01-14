@@ -1,0 +1,14 @@
+{
+  "name": "ahundredyears-pagination",
+  "version": "0.0.0",
+  "homepage": "https://github.com/bullrico/ahundredyears-pagination",
+  "authors": [
+    "Bobby Santiago <bobby@100yea.rs>"
+  ],
+  "main": "./src/ahundredyears-pagination.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.3"
+  }
+}

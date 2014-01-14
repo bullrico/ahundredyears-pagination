@@ -1,0 +1,359 @@
+{
+  "featured": "YouTube on PS3",
+  "projects": [
+    {
+      "name": "Fitblok",
+      "desc": "Fitblok is a One-Page Web app, which provides users with a gym-like experience and enables fitness trainers to develop their own following.",
+      "submissionDate": "2013-06-04",
+      "tags": [
+        "News",
+        "Events",
+        "Hear Now"
+      ]
+    },
+    {
+      "name": "Memory Game",
+      "desc": "Simple implementation of the memory game using AngularJS and CSS transitions.",
+      "submissionDate": "2012-05-24",
+      "tags": [
+        "Gala"
+      ]
+    },
+    {
+      "name": "PhoneCat",
+      "desc": "Android phone and tablet gallery — the AngularJS tutorial app. Learn how to build apps with AngularJS from scratch by following this tutorial!",
+      "submissionDate": "2012-05-24",
+      "tags": [
+        "Gala"
+      ]
+    },
+    {
+      "name": "wReader",
+      "desc": "Fancy HTML5 RSS Reader.",
+      "submissionDate": "2012-05-24",
+      "tags": [
+        "Gala"
+      ]
+    },
+    {
+      "name": "PeepCode Tunes",
+      "desc": "Simple HTML5 music player. Ported from Backbone.js to AngularJS.",
+      "submissionDate": "2012-05-24",
+      "tags": [
+        "Gala"
+      ]
+    },
+    {
+      "name": "docs.angularjs.org",
+      "desc": "Docs viewer app for AngularJS apis.",
+      "submissionDate": "2012-05-24",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "www.jobs.cz",
+      "desc": "Standardized college admission testing site for Universities in Czech Republic.",
+      "submissionDate": "2012-06-01",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "PubNub Chat",
+      "desc": "Blazing fast real-time messaging using PubNub and AngularJS.",
+      "submissionDate": "2012-06-12",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "name": "DoubleClick",
+      "desc": "DoubleClick Digital Marketing Manager and other DoubleClick Digital Marketing Platform applications are used by thousands of marketers and agencies worldwide.",
+      "submissionDate": "2012-06-14",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "name": "Sliding puzzle",
+      "desc": "Simple sliding puzzle game",
+      "submissionDate": "2012-06-14",
+      "tags": [
+        "Films"
+      ]
+    },
+    {
+      "name": "Balance Projector",
+      "desc": "Balance Projector can provide quick insights into your immediate financial future. The real time interface updates on every change and makes somewhat abstract numbers very tangible.",
+      "submissionDate": "2012-06-14",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "Cryptography Project",
+      "desc": "Encrypt and decrypt any text right in your browser. You can also generate random key phrases from the list of 39,000 English words.",
+      "submissionDate": "2012-06-14",
+      "tags": [
+        "Films"
+      ]
+    },
+    {
+      "name": "Project Time Recorder",
+      "desc": "Time sheet for recoring working hours and time allocation to projects.",
+      "submissionDate": "2012-06-14",
+      "tags": [
+        "Films"
+      ]
+    },
+    {
+      "name": "Search",
+      "desc": "Search for recent tweets for any topic. Filter results by tweet, author, etc.",
+      "submissionDate": "2012-06-21",
+      "tags": [
+        "Gala"
+      ]
+    },
+    {
+      "name": "CafeTownsend",
+      "desc": "CafeTownsend with AngularJS IoC",
+      "submissionDate": "2012-06-21",
+      "tags": [
+        "Gala"
+      ]
+    },
+    {
+      "name": "Posse",
+      "desc": "Posse lets you build a magical street, filled with all your favorite, real-world places, and share it with your friends to create a town. Not only will you be sharing your super amazing taste but you’ll also be discovering new awesome places and supporting a community of great retailers at the same time.",
+      "submissionDate": "2012-06-19",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "GitHub Contributors",
+      "desc": "An application to browse through the contributors of GitHub projects. Ported from YUI 3.5 to AngularJS.",
+      "submissionDate": "2012-07-08",
+      "tags": [
+        "Gala"
+      ]
+    },
+    {
+      "name": "dustr",
+      "desc": "Compile dust.js templates right in your browser. Uses linkedin's dustjs.",
+      "submissionDate": "2012-07-04",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "tetractis-olympics",
+      "desc": "Olympics 2012 real time live data",
+      "submissionDate": "2012-08-02",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "name": "ERMAHGERD Translator",
+      "desc": "Translate text to ERMAHGERD",
+      "submissionDate": "2012-07-25",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "name": "Fluid",
+      "desc": "Portfolio interface with combined visualization and navigation. If you want a look at the source, just contact me.",
+      "submissionDate": "2012-07-25",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "name": "SCAmp",
+      "desc": "SoundCloud Playlist Manager",
+      "submissionDate": "2012-07-28",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "name": "Awesome New Tab Page",
+      "desc": "An extensible new tab page for Google Chrome. Awesome, like you.",
+      "submissionDate": "2012-07-20",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "YouTube on PS3",
+      "desc": "The YouTube application for Sony's PlayStation 3.",
+      "submissionDate": "2012-08-14",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "ONS FloorPlan",
+      "desc": "The official app for ONS 2012, one of the world's leading meeting places for the global energy industry.",
+      "submissionDate": "2012-08-16",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "name": "Goodfilms Mobile Site",
+      "desc": "The mobile-optimised interface for Goodfilms - a new, social movie review site",
+      "submissionDate": "2012-24-8",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "Lokaligo",
+      "desc": "Online localization and translation management platform.",
+      "submissionDate": "2012-08-22",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "Provok.in",
+      "desc": "Prove your point. State an affirmation, back it up with evidence, unveil the truth.",
+      "submissionDate": "2012-08-20",
+      "tags": [
+        "Celebrity"
+      ]
+    },
+    {
+      "name": "STOIC",
+      "desc": "STOIC turns your Google Spreadsheets into complete applications, with a cloud-class database in the back-end, and a user interface for mobile devices.",
+      "submissionDate": "2012-09-25",
+      "tags": [
+        "Celebrity"
+      ]
+    },
+    {
+      "name": "angular-google-maps",
+      "desc": "Google Maps inside your angular.js application",
+      "submissionDate": "2012-08-30",
+      "tags": [
+        "Celebrity"
+      ]
+    },
+    {
+      "name": "CPresent",
+      "desc": "A simplified, web-based Church presentation system",
+      "submissionDate": "2012-10-01",
+      "tags": [
+        "Celebrity"
+      ]
+    },
+    {
+      "name": "Bingo Card Club",
+      "desc": "The best printable bingo card creator. Generate randomized bingo cards! Try the Make and Print dashboard, created using AngularJS.",
+      "submissionDate": "2012-10-03",
+      "tags": [
+        "Celebrity"
+      ]
+    },
+    {
+      "name": "Kodigon",
+      "desc": "Kodigon is a web application which encode and decode (if possible) string in many algorithm formats lke Base64, MD5, SHA1, etc. It's an example of AngularJS use.",
+      "submissionDate": "2012-10-06",
+      "tags": [
+        "Gala"
+      ]
+    },
+    {
+      "name": "eTuneBook",
+      "desc": "Abc Tunebook Manager",
+      "submissionDate": "2012-10-12",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "FolderChute",
+      "desc": "My cloud to your... in seconds",
+      "submissionDate": "2012-10-15",
+      "tags": [
+        "Events"
+      ]
+    },
+    {
+      "name": "Employee Training Tracker",
+      "desc": "Tracking employee training records",
+      "submissionDate": "2012-12-01",
+      "tags": [
+        "News",
+        "Celebrity",
+        "Events"
+      ]
+    },
+    {
+      "name": "NameOkay",
+      "desc": "Domain Name Generator",
+      "submissionDate": "2012-11-28",
+      "tags": [
+        "News",
+        "Celebrity",
+        "Events"
+      ]
+    },
+    {
+      "name": "Semantic Body Browser",
+      "desc": "A tool for graphically exploring an organism's body. The app allows a user to browse through the human and murine kidney and trace the developmental stages of the nephron. The vector graphics are generated with Raphael.",
+      "submissionDate": "2012-11-23",
+      "tags": [
+        "News",
+        "Celebrity",
+        "Events"
+      ]
+    },
+    {
+      "name": "Plunker",
+      "desc": "The next generation of lightweight collaborative online editing.",
+      "submissionDate": "2012-11-21",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "Trailers for Netflix",
+      "desc": "Trailers for Movies in Netflix Instant Streaming",
+      "submissionDate": "2012-11-17",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "yap.TV Facebook Application",
+      "desc": "Social TV Guide for Facebook",
+      "submissionDate": "2012-10-16",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "name": "grubsmart",
+      "desc": "Restaurant Deals sans coupons. Grubsmart is an online resource for great restaurant deals",
+      "submissionDate": "2012-11-09",
+      "tags": [
+        "Events",
+        "News"
+      ]
+    },
+    {
+      "name": "everymote",
+      "desc": "A remote for internet of things (IoT) and web of things.",
+      "submissionDate": "2012-11-03",
+      "tags": [
+        "News",
+        "Celebrity"
+      ]
+    }
+  ]
+}

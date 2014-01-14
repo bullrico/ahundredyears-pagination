@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="paginationApp">
+  <head>
+    <title>Pagination Demo</title>
+    <link rel='stylesheet' href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/pagination.css">
+  </head>
+  <body ng-controller="PaginationController">
+    <div role="main" class="container pagination-main-container">
+
+      <script type="text/ng-template" id="pagination-project.html">
+        <div ng-click="lightbox(project)">
+          <h2>{{project.name}}</h2>
+          <p class='pagination-project-desc'>{{project.desc}}</p>
+          <p>{{project.submissionDate}}</p>
+          <p><a href="#" >Read more</a></p>
+          <span class="label label-important pagination-label" ng-repeat="tag in project.tags" ng-click="addTag(tag)">{{tag}}</span>
+
+        </div>
+      </script>
+
+      <div class="row first pagination-featured">
+        <div class="span12">
+
+          <!-- Search -->
+          <form class="well">
+            <div class="pagination-btn-tags">
+              <ul >
+                <li ng-show="tags.length == 0">
+                  <a href="#tag">All</a>
+                </li>
+                <li ng-repeat="tag in tags">
+                  <a href="#tag" ng-click="addTag()">{{tag}}</a>
+                </li>
+              </ul>
+              <!-- active tags -->
+              <span class="label label-important pagination-label" ng-repeat="tag in activeTags" ng-click="removeTag()" ng-cloak>
+                <span ng-bind="tag"></span> <i class="icon-remove-sign"></i>
+              </span>
+            </div>
+
+            <select ng-options="p.val as p.label for p in sortables" class="input-medium pagination-select-sort" ng-model="sortPrep" ng-change="search()"></select>
+          </form>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <ul>
+          <li ng-class="{disabled: currentPage == 0}">
+            <a href ng-click="prevPage()">Prev</a>
+          </li>
+          <li ng-repeat="n in range(pagedProjects.length)"
+            ng-class="{active: n == currentPage}"
+            ng-click="setPage()">
+            <a href ng-bind="n + 1">1</a>
+          </li>
+          <li ng-class="{disabled: currentPage == pagedProjects.length - 1}">
+            <a href ng-click="nextPage()">Next</a>
+          </li>
+        </ul>
+      </div>
+      <div class="spacer"></div>
+
+      <div class="row pagination-projects" ng-repeat="projectCol in pagedProjects[currentPage]">
+        <div class="span6" ng-repeat="project in projectCol">
+          <pagination project="project" lightbox="lightbox" add-tag="addTag" class= "well pagination-project-well"></pagination>
+        </div>
+      </div>
+
+      <div class="center">
+        <div class="pagination">
+          <ul>
+            <li ng-class="{disabled: currentPage == 0}">
+              <a href ng-click="prevPage()">Prev</a>
+            </li>
+            <li ng-repeat="n in range(pagedProjects.length)"
+              ng-class="{active: n == currentPage}"
+              ng-click="setPage()">
+              <a href ng-bind="n + 1">1</a>
+            </li>
+            <li ng-class="{disabled: currentPage == pagedProjects.length - 1}">
+              <a href ng-click="nextPage()">Next</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="modal fade" ng-class="{in: lightbox()}">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="lightbox(false)">×</button>
+        <h2>{{lightbox().name}}</h2>
+      </div>
+      <div class="modal-body">
+        <a href="{{lightbox().url}}">
+          <img alt="{{lightbox() && lightbox().name + ' screenshot'}}" class="well" ng-src="{{lightbox() && 'projects/' + lightbox().thumb}}">
+        </a>
+        <p>{{lightbox().desc}}</p>
+        <p>
+          <span class="label label-info pagination-tag" ng-repeat="tag in lightbox().tags">{{tag}}</span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a href="{{lightbox().url}}" class="btn btn-primary">Check out the App</a>
+        <a ng-show="lightbox().src" href="{{lightbox().src}}" class="btn">View the Source</a>
+        <a ng-show="lightbox().info" href="{{lightbox().info}}" class="btn">Read More</a>
+      </div>
+    </div>
+    <div class="modal-backdrop fade" ng-class="{in: lightbox()}" ng-click='lightbox(false)'></div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../src/ahundredyears-pagination.js"></script>
+
+    <script type="text/javascript" src="js/pagination.js"></script>
+  </body>
+</html>
