@@ -12,16 +12,17 @@ angular.module('ahundredyears.pagination')
 .directive('pagination', [ function() {
   return {
     restrict: 'E',
-    templateUrl: 'pagination-project.html',
+    template: "<div ng-click='lightbox(article)' class='block'> <img src='{{article.thumbnail_url}}'/><h2>{{article.title}}</h2> <p class='pagination-article-text'>{{article.text}}</p><p><a href='#' >Read more</a></p></div>",
     scope: {
+      article: '=',
       lightbox: '=',
-      project: '=',
       addTag: '='
     }
   }
 }])
 
-.controller('PaginationController', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
+.controller('PaginationController', ['$scope', '$http', '$filter', '$log', function ($scope, $http, $filter, $log) {
+  $scope.$log = $log;
   $scope.sortables = [
     {
       label: 'Unsorted',
@@ -33,7 +34,7 @@ angular.module('ahundredyears.pagination')
     },
     {
       label: 'Description',
-      val: 'desc'
+      val: 'text'
     },
     {
       label: 'Submitter',
@@ -55,39 +56,33 @@ angular.module('ahundredyears.pagination')
   }
   $scope.lightbox = function (arg) {
     if (typeof arg !== 'undefined') {
-      if (arg !== false) {
-        history.pushState(arg, null, 'projects/' + arg.id);
-      } else {
-        history.pushState(false, null, '/');
-      }
+      // if (arg !== false) {
+      //   history.pushState(arg, null, 'articles/' + arg.id);
+      // } else {
+      //   history.pushState(false, null, '/');
+      // }
       lightbox = arg;
     }
     return lightbox;
   };
 
-  $http.get('projects/projects.json').
+  $http.get('data/articles.json').
     success(function (data, status, headers, config) {
-      $scope.projects = data.projects;
-
-      // find the featured project
-      for (var i = $scope.projects.length - 1; i >= 0; i--) {
-        if (data.projects[i].name === data.featured) {
-          $scope.featured = data.projects[i];
-          break;
-        }
-      }
-
-      $scope.projects.sort(function () {
+      $scope.articles = data.articles;
+      $scope.articles.sort(function () {
         return Math.random() - 0.5;
       });
+
+      // find the featured articles
+      $scope.featured = data.featured;
 
       $scope.tags = [];
       $scope.activeTags = [];
 
       // add tags
-      angular.forEach(data.projects, function (project) {
-        project.id = project.name.replace(/ /g, '-');
-        angular.forEach(project.tags, function (tag) {
+      angular.forEach(data.articles, function (article) {
+        article.id = article.title.replace(/ /g, '-');
+        angular.forEach(article.tags, function (tag) {
 
           // ensure tags are unique
           if ($scope.tags.indexOf(tag) === -1) {
@@ -99,24 +94,16 @@ angular.module('ahundredyears.pagination')
       $scope.tags.sort();
       $scope.search();
 
-      if (document.location.pathname.substr(0, 9) === '/project/') {
-        var projectName = document.location.pathname.substr(9);
-        data.projects.forEach(function (project) {
-          if (project.id === projectName) {
-            lightbox = project;
-          }
-        });
-      }
-
     }).
     error(function (data, status, headers, config) {
       // TODO: display a nice error message?
       $scope.error = "Cannot get data from the server";
     });
 
-  var num = 2;
-  $scope.filteredProjects = [];
-  $scope.groupedProjects = [];
+
+  var num = 3;
+  $scope.filteredArticles = [];
+  $scope.groupedArticles = [];
 
   // search helpers
   var searchMatch = function (haystack, needle) {
@@ -137,52 +124,51 @@ angular.module('ahundredyears.pagination')
   };
 
   $scope.search = function () {
-    $scope.filteredProjects = $filter('filter')($scope.projects, function (project) {
-      return (searchMatch(project.desc, $scope.query) || searchMatch(project.name, $scope.query)) &&
-        hasAllTags(project.tags, $scope.activeTags);
+    $scope.filteredArticles = $filter('filter')($scope.articles, function (article) {
+      return (searchMatch(article.desc, $scope.query) || searchMatch(article.title, $scope.query)) &&
+        hasAllTags(article.tags, $scope.activeTags);
     });
 
     if ($scope.sortPrep !== 'none') {
-      $scope.filteredProjects = $filter('orderBy')($scope.filteredProjects, $scope.sortPrep);
+      $scope.filteredArticles = $filter('orderBy')($scope.filteredArticles, $scope.sortPrep);
     }
 
     $scope.currentPage = 0;
     $scope.group();
   };
 
-  // re-calculate groupedProjects in place
+  // re-calculate groupedArticles in place
   $scope.group = function () {
+    $scope.groupedArticles.length = Math.ceil($scope.filteredArticles.length / num);
 
-    $scope.groupedProjects.length = Math.ceil($scope.filteredProjects.length / num);
-
-    for (var i = 0; i < $scope.filteredProjects.length; i++) {
+    for (var i = 0; i < $scope.filteredArticles.length; i++) {
       if (i % num === 0) {
-        $scope.groupedProjects[Math.floor(i / num)] = [ $scope.filteredProjects[i] ];
+        $scope.groupedArticles[Math.floor(i / num)] = [ $scope.filteredArticles[i] ];
       } else {
-        $scope.groupedProjects[Math.floor(i / num)].push($scope.filteredProjects[i]);
+        $scope.groupedArticles[Math.floor(i / num)].push($scope.filteredArticles[i]);
       }
     }
 
-    if ($scope.filteredProjects.length % num !== 0) {
-      $scope.groupedProjects[$scope.groupedProjects.length - 1].length = num - ($scope.filteredProjects.length % num);
+    if ($scope.filteredArticles.length % num !== 0) {
+      $scope.groupedArticles[$scope.groupedArticles.length - 1].length = num - ($scope.filteredArticles.length % num);
     }
 
     $scope.groupToPages();
   };
 
-  var itemsPerPage = 5;
-  $scope.pagedProjects = [];
+  var itemsPerPage = 3;
+  $scope.pagedArticles = [];
   $scope.currentPage = 0;
 
   // calc pages in place
   $scope.groupToPages = function () {
-    $scope.pagedProjects = [];
+    $scope.pagedArticles = [];
 
-    for (var i = 0; i < $scope.groupedProjects.length; i++) {
+    for (var i = 0; i < $scope.groupedArticles.length; i++) {
       if (i % itemsPerPage === 0) {
-        $scope.pagedProjects[Math.floor(i / itemsPerPage)] = [ $scope.groupedProjects[i] ];
+        $scope.pagedArticles[Math.floor(i / itemsPerPage)] = [ $scope.groupedArticles[i] ];
       } else {
-        $scope.pagedProjects[Math.floor(i / itemsPerPage)].push($scope.groupedProjects[i]);
+        $scope.pagedArticles[Math.floor(i / itemsPerPage)].push($scope.groupedArticles[i]);
       }
     }
   };
@@ -245,7 +231,7 @@ angular.module('ahundredyears.pagination')
   };
 
   $scope.nextPage = function () {
-    if ($scope.currentPage < $scope.pagedProjects.length - 1) {
+    if ($scope.currentPage < $scope.pagedArticles.length - 1) {
       $scope.currentPage++;
     }
   };

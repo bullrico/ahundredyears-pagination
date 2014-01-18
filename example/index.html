@@ -6,22 +6,23 @@
     <link rel="stylesheet" href="css/pagination.css">
   </head>
   <body ng-controller="PaginationController">
+    <script type="text/ng-template" id="pagination-project.html">
+      <div ng-click="lightbox(project)">
+        <h2>{{project.name}}</h2>
+        <p class='pagination-project-desc'>{{project.desc}}</p>
+        <p>{{project.submissionDate}}</p>
+        <p><a href="#" >Read more</a></p>
+        <span class="label label-important pagination-label" ng-repeat="tag in project.tags" ng-click="addTag(tag)">{{tag}}</span>
+
+      </div>
+    </script>
     <div role="main" class="container pagination-main-container">
-
-      <script type="text/ng-template" id="pagination-project.html">
-        <div ng-click="lightbox(project)">
-          <h2>{{project.name}}</h2>
-          <p class='pagination-project-desc'>{{project.desc}}</p>
-          <p>{{project.submissionDate}}</p>
-          <p><a href="#" >Read more</a></p>
-          <span class="label label-important pagination-label" ng-repeat="tag in project.tags" ng-click="addTag(tag)">{{tag}}</span>
-
-        </div>
-      </script>
 
       <div class="row first pagination-featured">
         <div class="span12">
-
+        <div ng-repeat="featuredArticle in featured">
+          <h1>{{featuredArticle.title}}</h1>
+        </div>
           <!-- Search -->
           <form class="well">
             <div class="pagination-btn-tags">
@@ -49,21 +50,22 @@
           <li ng-class="{disabled: currentPage == 0}">
             <a href ng-click="prevPage()">Prev</a>
           </li>
-          <li ng-repeat="n in range(pagedProjects.length)"
+          <li ng-repeat="n in range(pagedArticles.length)"
             ng-class="{active: n == currentPage}"
             ng-click="setPage()">
             <a href ng-bind="n + 1">1</a>
           </li>
-          <li ng-class="{disabled: currentPage == pagedProjects.length - 1}">
+          <li ng-class="{disabled: currentPage == pagedArticles.length - 1}">
             <a href ng-click="nextPage()">Next</a>
           </li>
         </ul>
       </div>
       <div class="spacer"></div>
 
-      <div class="row pagination-projects" ng-repeat="projectCol in pagedProjects[currentPage]">
-        <div class="span6" ng-repeat="project in projectCol">
-          <pagination project="project" lightbox="lightbox" add-tag="addTag" class= "well pagination-project-well"></pagination>
+      <div class="row pagination-articles" ng-repeat="articleCol in pagedArticles[currentPage]">
+        <div class="span3" ng-repeat="article in articleCol">
+          <pagination article="article" lightbox="lightbox" add-tag="addTag" class= "well pagination-article-well"></pagination>
+
         </div>
       </div>
 
@@ -73,12 +75,12 @@
             <li ng-class="{disabled: currentPage == 0}">
               <a href ng-click="prevPage()">Prev</a>
             </li>
-            <li ng-repeat="n in range(pagedProjects.length)"
+            <li ng-repeat="n in range(pagedArticles.length)"
               ng-class="{active: n == currentPage}"
               ng-click="setPage()">
               <a href ng-bind="n + 1">1</a>
             </li>
-            <li ng-class="{disabled: currentPage == pagedProjects.length - 1}">
+            <li ng-class="{disabled: currentPage == pagedArticles.length - 1}">
               <a href ng-click="nextPage()">Next</a>
             </li>
           </ul>
@@ -94,7 +96,7 @@
       </div>
       <div class="modal-body">
         <a href="{{lightbox().url}}">
-          <img alt="{{lightbox() && lightbox().name + ' screenshot'}}" class="well" ng-src="{{lightbox() && 'projects/' + lightbox().thumb}}">
+          <img alt="{{lightbox() && lightbox().name + ' screenshot'}}" class="well" ng-src="{{lightbox() && 'articles/' + lightbox().thumb}}">
         </a>
         <p>{{lightbox().desc}}</p>
         <p>
