@@ -12,7 +12,7 @@ angular.module('ahundredyears.pagination')
 .directive('pagination', [ function() {
   return {
     restrict: 'E',
-    template: "<div ng-click='lightbox(article)' class='block'> <img src='{{article.thumbnail_url}}'/><h2>{{article.title}}</h2> <p class='pagination-article-text'>{{article.text}}</p><p><a href='#' >Read more</a></p></div>",
+    template: "<div class='block'> <img src='{{article.thumbnail_url}}'/><h2>{{article.title}}</h2><p class='read-more' href='#' ng-click='lightbox(article)'>Read more &rarr;</p></div>",
     scope: {
       article: '=',
       lightbox: '=',
@@ -56,11 +56,6 @@ angular.module('ahundredyears.pagination')
   }
   $scope.lightbox = function (arg) {
     if (typeof arg !== 'undefined') {
-      // if (arg !== false) {
-      //   history.pushState(arg, null, 'articles/' + arg.id);
-      // } else {
-      //   history.pushState(false, null, '/');
-      // }
       lightbox = arg;
     }
     return lightbox;
