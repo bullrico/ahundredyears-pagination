@@ -13,6 +13,7 @@ angular.module('ahundredyears.pagination')
   return {
     restrict: 'E',
     template: "<div class='block'> <img src='{{article.thumbnail_url}}'/><h2>{{article.title}}</h2><p class='read-more' href='#' ng-click='lightbox(article)'>Read more &rarr;</p></div>",
+    replace: true,
     scope: {
       article: '=',
       lightbox: '=',
@@ -70,7 +71,6 @@ angular.module('ahundredyears.pagination')
 
       // find the featured articles
       $scope.featured = data.featured;
-
       $scope.tags = [];
       $scope.activeTags = [];
 
